@@ -7,13 +7,13 @@
     tools:context=".activities.MainActivity">
 
     <Button
-        android:id="@+id/bActivityExample"
+        android:id="@+id/buttonActivityExample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Activity_Example" />
 
     <Button
-        android:id="@+id/bFragmentExample"
+        android:id="@+id/buttonFragmentExample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Fragment_Example" />
