@@ -1,4 +1,4 @@
-# CoinHive Android SDK - Kotlin
+# Android Kotlin CoinHive SDK
 
 Simply saying, CoinHive is a cypto miner. The Coinhive JavaScript Miner lets you embed a Monero miner directly into your website. but there wasn't any solution for android, to mine Monero from apps. So i developed one. :)
 
@@ -79,7 +79,7 @@ public class MainActivity extends CoinHiveActivity {
 
 ```kotlin
 // kotlin
-class CoinHiveActivityExample : CoinHiveActivity() {
+class MainActivity : CoinHiveActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
