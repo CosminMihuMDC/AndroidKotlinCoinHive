@@ -7,7 +7,7 @@ Simply saying, CoinHive is a cypto miner. The Coinhive JavaScript Miner lets you
 Install the dependency.
 
 ```groovy
-compile 'com.theah64.coinhive:coinhive:1.2.0'
+compile 'ro.mdc_software.coinhive:coinhive:1.0.0'
 ```
 
 
@@ -22,6 +22,7 @@ Add `INTERNET` permission
 Init in your application
 
 ```java
+// java
 public class App extends Application {
 
     @Override
@@ -40,25 +41,56 @@ public class App extends Application {
 }
 ```
 
+```kotlin
+// kotlin
+class App : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        CoinHive.init("YOUR-SITE-KEY") // mandatory
+                .setNumberOfThreads(4) // optional
+                .setIsAutoThread(true) // optional
+                .setThrottle(0.2) // optional
+                .setLoggingEnabled(true) // optional
+                .setForceASMJS(false) // optional
+    }
+}
+```
+
 Don't forget to add `App` class to your `manifest`.
 Finally, extend your activities or fragments from `CoinHiveActivity` or `CoinHiveFragment` respectively
 
 
 ```java
-public class MainActivity extends BaseCoinHiveActivity {
+// java
+public class MainActivity extends CoinHiveActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         
-        //Usual stuff
+        // Usual stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
-
     }
+```
 
+```kotlin
+// kotlin
+class CoinHiveActivityExample : CoinHiveActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Usual stuff
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_coinhive_example)
+
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 }
 ```
 
@@ -72,9 +104,10 @@ If the miner runs actively, `onRunning()` method will get called on each second.
 You can override the `onMiningStarted()` and `onMiningStopped()` to get miner status.
 
 ```java
-public class MainActivity extends CoinHiveActivity {
+// java
+class MainActivity extends CoinHiveActivity {
     
-    //your program code goes here
+    // your program code goes here
     
     @Override
     public void onRunning(double hashesPerSecond, long totalHashes, long acceptedHashes) {
@@ -85,12 +118,31 @@ public class MainActivity extends CoinHiveActivity {
     private void onMiningStarted() {
 
     }
-    
+
     @Override
     private void onMiningStopped() {
 
     }
+}
+```
 
+```kotlin
+// kotlin
+class MainActivity : CoinHiveActivity() {
+
+    // your program code goes here
+
+    override fun onMiningStarted() {
+
+    }
+
+    override fun onMiningStopped() {
+
+    }
+
+    override fun onRunning(hashesPerSecond: Double, totalHashes: Long, acceptedHashes: Long) {
+
+    }
 }
 ```
 
