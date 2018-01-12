@@ -154,3 +154,5 @@ To start the miner, you can call `startMining()`.
 
 NOTE:By default, miner will start automatically.
 
+Credit: https://github.com/theapache64
+
